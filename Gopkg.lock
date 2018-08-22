@@ -17,6 +17,12 @@
   version = "v0.4.9"
 
 [[projects]]
+  name = "github.com/Microsoft/hcsshim"
+  packages = ["."]
+  revision = "3dfcd6badd53422b7cbafacb6c4ad0891b42ff16"
+  version = "v0.6.12"
+
+[[projects]]
   branch = "master"
   name = "github.com/Nvveen/Gotty"
   packages = ["."]
@@ -38,10 +44,45 @@
   revision = "3a771d992973f24aa725d07868b467d1ddfceafb"
 
 [[projects]]
+  name = "github.com/boltdb/bolt"
+  packages = ["."]
+  revision = "2f1ce7a837dcb8da3ec595b1dac9d0632f0f99e8"
+  version = "v1.3.1"
+
+[[projects]]
   name = "github.com/cbroglie/mustache"
   packages = ["."]
   revision = "eb931a9d20042e51d8a3a9ad5a9ba9bc8282c564"
   version = "v1.0.1"
+
+[[projects]]
+  name = "github.com/containerd/containerd"
+  packages = [
+    "containers",
+    "content",
+    "content/local",
+    "errdefs",
+    "filters",
+    "gc",
+    "identifiers",
+    "images",
+    "images/oci",
+    "labels",
+    "leases",
+    "log",
+    "metadata",
+    "metadata/boltutil",
+    "mount",
+    "namespaces",
+    "platforms",
+    "reference",
+    "remotes",
+    "remotes/docker",
+    "snapshots",
+    "sys"
+  ]
+  revision = "468a545b9edcd5932818eb9de8e72413e616e86e"
+  version = "v1.1.2"
 
 [[projects]]
   branch = "master"
@@ -564,6 +605,12 @@
 
 [[projects]]
   branch = "master"
+  name = "golang.org/x/sync"
+  packages = ["errgroup"]
+  revision = "1d60e4601c6fd243af51cc01ddf169918a5407ca"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/sys"
   packages = [
     "unix",
@@ -814,6 +861,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d9a1011f4ba0220435ba111f32ece000026dc4123ffa9fcfbcabac9bfd29f4f8"
+  inputs-digest = "3aecc13b4feeb7e6a2e871c3d7b82614fb16737814c1530c78268977dbfb63f7"
   solver-name = "gps-cdcl"
   solver-version = 1

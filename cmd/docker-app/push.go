@@ -1,8 +1,12 @@
 package main
 
 import (
-	"github.com/docker/app/internal/packager"
+	"context"
+	"path/filepath"
+
+	"github.com/docker/app/internal/content"
 	"github.com/docker/cli/cli"
+	"github.com/docker/docker/pkg/homedir"
 	"github.com/spf13/cobra"
 )
 
@@ -18,12 +22,21 @@ func pushCmd() *cobra.Command {
 		Short: "Push the application to a registry",
 		Args:  cli.RequiresMaxArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			app, err := packager.Extract(firstOrEmpty(args))
+			/*
+				app, err := packager.Extract(firstOrEmpty(args))
+				if err != nil {
+					return err
+				}
+				defer app.Cleanup()
+			*/
+			appStore, err := content.NewStore(filepath.Join(homedir.Get(), ".docker/app"))
 			if err != nil {
 				return err
 			}
-			defer app.Cleanup()
-			return packager.Push(app, opts.namespace, opts.tag)
+			ctx := context.Background()
+			_, err = appStore.Push(ctx, args[0])
+			return err
+			// return packager.Push(app, opts.namespace, opts.tag)
 		},
 	}
 	cmd.Flags().StringVar(&opts.namespace, "namespace", "", "namespace to use (default: namespace in metadata)")
